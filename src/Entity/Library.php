@@ -5,45 +5,61 @@ declare(strict_types=1);
 namespace App\Entity;
 
 
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="library")
+ */
 class Library
 {
     /**
      * @var int
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
      * @var string
+     * @ORM\Column(type="string")
      */
     private $lat;
 
     /**
      * @var string
+     * @ORM\Column(type="string")
      */
     private $lon;
 
     /**
      * @var string
+     * @ORM\Column(type="string")
      */
     private $district;
 
     /**
      * @var string
+     * @ORM\Column(type="string")
      */
     private $street;
 
     /**
      * @var string
+     * @ORM\Column(type="string")
      */
     private $houseNumber;
 
     /**
      * @var string
+     * @ORM\Column(type="string")
      */
     private $name;
 
     /**
      * @var string
+     * @ORM\Column(type="string")
      */
     private $www;
 

@@ -73,7 +73,7 @@ class Library
         $this->id = $id;
     }
 
-    public function getLat(): string
+    public function getLat(): ?string
     {
         return $this->lat;
     }
@@ -83,7 +83,7 @@ class Library
         $this->lat = $lat;
     }
 
-    public function getLon(): string
+    public function getLon(): ?string
     {
         return $this->lon;
     }
@@ -123,7 +123,7 @@ class Library
         $this->name = $name;
     }
 
-    public function getWww(): string
+    public function getWww(): ?string
     {
         return $this->www;
     }

@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class BookController extends AbstractController
 {
     /**
-     * @Route("/")
+     * @Route("/ksiazki")
      */
     public function home()
     {

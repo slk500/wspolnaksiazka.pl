@@ -1,19 +1,20 @@
 <?php
 
 
-namespace App\Controller;
+namespace App\Controller\Api;
 
 
 use App\Entity\Library;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class LibraryController extends AbstractController
 {
     /**
-     * @Route("/biblioteki")
+     * @Route("/api/biblioteki")
      */
     public function list(EntityManagerInterface $entityManager, SerializerInterface $serializer)
     {
@@ -21,9 +22,9 @@ class LibraryController extends AbstractController
             ->getRepository(Library::class)
             ->findAll();
 
-        return $this->render('base.html.twig',[
-            'libraries' => $libraries
-        ]);
+        $librariesInJson = $serializer->serialize(['data' => $libraries], 'json');
+
+        return new Response($librariesInJson);
     }
 }
 

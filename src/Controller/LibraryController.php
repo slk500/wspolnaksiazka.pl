@@ -27,7 +27,9 @@ class LibraryController extends AbstractController
             $entityManager->persist($library);
             $entityManager->flush();
 
-            $this->addFlash('success','Super! Dodałeś nową bibliotekę :)');
+            $this->addFlash('success','Świetnie! Dodałeś nową bibliotekę :)');
+
+            return $this->redirectToRoute('app_library_list');
         }
 
         return $this->render('library/create.html.twig' , [

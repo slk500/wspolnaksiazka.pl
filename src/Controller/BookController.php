@@ -28,10 +28,12 @@ class BookController extends AbstractController
             $entityManager->persist($book);
             $entityManager->flush();
 
-            $this->addFlash('success','Super! Dodałeś nową książkę :)');
+            $this->addFlash('success','Świetnie! Dodałeś nową książkę :)');
+
+            return $this->redirectToRoute('app_book_list');
         }
 
-        return $this->render('library/create.html.twig' , [
+        return $this->render('book/create.html.twig' , [
             'bookForm' => $form->createView()
         ]);
     }

@@ -4,27 +4,27 @@
 namespace App\Controller\Api;
 
 
-use App\Entity\Library;
+use App\Entity\Book;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\SerializerInterface;
 
-class LibraryController extends AbstractController
+class BookController extends AbstractController
 {
     /**
-     * @Route("/api/libraries")
+     * @Route("/api/books")
      */
     public function list(EntityManagerInterface $entityManager, SerializerInterface $serializer)
     {
-        $libraries = $entityManager
-            ->getRepository(Library::class)
+        $books = $entityManager
+            ->getRepository(Book::class)
             ->findAll();
 
-        $librariesInJson = $serializer->serialize(['data' => $libraries], 'json');
+        $booksInJson = $serializer->serialize(['data' => $books], 'json');
 
-        return new Response($librariesInJson);
+        return new Response($booksInJson);
     }
 }
 

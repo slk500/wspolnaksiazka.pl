@@ -6,12 +6,12 @@
             {{ message }}
         </div>
     {% endfor %}
+    <div class="text-center">
+        <span> Nie ma twojej biblioteki na liście? To ją dodaj -> <a href="{{ path('app_library_create') }}">Kliknij tutaj aby dodać bibliotekę</a></span>
+    </div>
+
     <div class="container">
         <div class="row">
-            <div>
-                <span> Nie ma twojej biblioteki na liście? To ją dodaj -> <a href="{{ path('app_library_create') }}">Kliknij tutaj aby dodać nową bibliotekę</a></span>
-            </div>
-
             <table id="table_id" class="display">
                 <thead>
                 <tr>

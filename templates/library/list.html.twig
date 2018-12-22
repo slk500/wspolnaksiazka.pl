@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {%  for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <div class="container">
+        <div class="row">
+            <div>
+                <span> Nie ma twojej biblioteki na liście? To ją dodaj -> <a href="{{ path('app_library_create') }}">Kliknij tutaj aby dodać nową bibliotekę</a></span>
+            </div>
+
+            <table id="table_id" class="display">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Nazwa</th>
+                    <th>Miasto</th>
+                    <th>Dzielnica</th>
+                    <th>Ulica</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            var t = $('#table_id').DataTable({
+                "ajax": "{{ path('app_api_library_list') }}",
+                "columns": [
+                    {data: null},
+                    {
+                        mData: function (data) {
+                            return data.name;
+                        }
+                    },
+                    {
+                        mData: function (data) {
+                            return data.city;
+                        }
+                    },
+                    {
+                        mData: function (data) {
+                            return data.district;
+                        }
+                    },
+                    {
+                        mData: function (data) {
+                            return data.street + ' ' + data.houseNumber;
+                        }
+                    },
+                ],
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Polish.json"
+                },
+                "bPaginate": false,
+                "dom": 'lifrtp'
+            });
+
+            t.on('order.dt search.dt', function () {
+                t.column(0, {search: 'applied', order: 'applied'}).nodes().each(function (cell, i) {
+                    cell.innerHTML = i + 1;
+                });
+            }).draw();
+        });
+    </script>
+{% endblock %}

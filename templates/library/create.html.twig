@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="text-center">Dodaj nową bibliotekę</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            {{ form_start(libraryForm) }}
+
+            {{ form_widget(libraryForm) }}
+
+            <button type="submit" class="btn btn-primary"> Utwórz</button>
+            {{ form_end(libraryForm) }}
+        </div>
+        </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
+

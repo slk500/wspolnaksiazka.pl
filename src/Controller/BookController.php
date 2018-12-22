@@ -12,9 +12,9 @@ class BookController extends AbstractController
     /**
      * @Route("/ksiazki")
      */
-    public function home()
+    public function list()
     {
-        return $this->render('base.html.twig');
+        return $this->render('book/list.html.twig');
     }
 }
 

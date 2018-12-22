@@ -37,6 +37,12 @@ class Library
      * @var string
      * @ORM\Column(type="string")
      */
+    private $city;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
     private $district;
 
     /**
@@ -93,7 +99,7 @@ class Library
         $this->lon = $lon;
     }
 
-    public function getStreet(): string
+    public function getStreet(): ?string
     {
         return $this->street;
     }
@@ -103,7 +109,7 @@ class Library
         $this->street = $street;
     }
 
-    public function getHouseNumber(): string
+    public function getHouseNumber(): ?string
     {
         return $this->houseNumber;
     }
@@ -113,7 +119,7 @@ class Library
         $this->houseNumber = $houseNumber;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -133,7 +139,7 @@ class Library
         $this->www = $www;
     }
 
-    public function getDistrict(): string
+    public function getDistrict(): ?string
     {
         return $this->district;
     }
@@ -141,6 +147,16 @@ class Library
     public function setDistrict(string $district): void
     {
         $this->district = $district;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): void
+    {
+        $this->city = $city;
     }
 }
 

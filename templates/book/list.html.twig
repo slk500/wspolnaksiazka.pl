@@ -46,6 +46,36 @@
                             return data.author;
                         }
                     },
+                    {
+                        mData: function (data) {
+
+                            let city = '';
+                            if(data.libraries[0]){
+                                city = data.libraries[0].city
+                            }
+                            return city;
+                        }
+                    },
+                    {
+                        mData: function (data) {
+
+                            let district = '';
+                            if(data.libraries[0]){
+                                district = data.libraries[0].district
+                            }
+                            return district;
+                        }
+                    },
+                    {
+                        mData: function (data) {
+
+                            let name = '';
+                            if(data.libraries[0]){
+                                name = data.libraries[0].name
+                            }
+                            return name;
+                        }
+                    },
                 ],
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Polish.json"

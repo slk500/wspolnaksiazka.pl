@@ -4,6 +4,7 @@
 namespace App\Entity;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -49,8 +50,15 @@ class Book
      */
     private $user;
 
+    /**
+     * @var LibraryBook
+     * @ORM\OneToMany(targetEntity="LibraryBook", mappedBy="book")
+     */
+    private $libraryBook;
+
     public function __construct()
     {
+        $this->libraryBook = new ArrayCollection();
         $this->created_at = new \DateTime('now');
     }
 
@@ -104,7 +112,7 @@ class Book
         $this->created_at = $created_at;
     }
 
-    public function getUser(): User
+    public function getUser(): ?User
     {
         return $this->user;
     }
@@ -112,5 +120,12 @@ class Book
     public function setUser(User $user): void
     {
         $this->user = $user;
+    }
+
+    public function getLibraries()
+    {
+        return $this->libraryBook->map(function (LibraryBook $libraryBook) {
+            return $libraryBook->getLibrary();
+        })->toArray();
     }
 }

@@ -186,7 +186,7 @@ class Library
         $this->created_at = $created_at;
     }
 
-    public function getUser(): User
+    public function getUser(): ?User
     {
         return $this->user;
     }

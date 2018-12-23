@@ -22,6 +22,11 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
+    private $username;
+
+    /**
+     * @ORM\Column(type="string", length=180, unique=true)
+     */
     private $email;
 
     /**
@@ -34,6 +39,18 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(type="datetime")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $created_at;
+
+    public function __construct()
+    {
+        $this->created_at = new \DateTime('now');
+    }
 
     public function getId(): ?int
     {
@@ -111,5 +128,15 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTime $created_at): void
+    {
+        $this->created_at = $created_at;
     }
 }

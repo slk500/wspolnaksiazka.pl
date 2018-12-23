@@ -24,6 +24,7 @@ class LibraryBook
     /**
      * @var Library
      * @ORM\ManyToOne(targetEntity="App\Entity\Library")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $library;
 
@@ -37,7 +38,6 @@ class LibraryBook
     /**
      * @var \DateTime
      * @ORM\Column(type="datetime")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $created_at;
 

@@ -69,6 +69,23 @@ class Library
      */
     private $www;
 
+    /**
+     * @var \DateTime
+     * @ORM\Column(type="datetime")
+     */
+    private $created_at;
+
+    /**
+     * @var User
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    private $user;
+
+    public function __construct()
+    {
+        $this->created_at = new \DateTime('now');
+    }
+
     public function getId(): int
     {
         return $this->id;
@@ -157,6 +174,26 @@ class Library
     public function setCity(string $city): void
     {
         $this->city = $city;
+    }
+
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTime $created_at): void
+    {
+        $this->created_at = $created_at;
+    }
+
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): void
+    {
+        $this->user = $user;
     }
 }
 

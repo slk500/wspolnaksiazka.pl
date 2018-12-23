@@ -6,18 +6,35 @@ namespace App\Form;
 
 use App\Entity\Library;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class LibraryFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('city')
+            ->add('name',TextType::class, [
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Proszę wpisać nazwę biblioteki',
+                    ])]
+            ])
+            ->add('city',TextType::class, [
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Proszę wpisać miasto',
+                    ])]
+            ])
             ->add('district')
-            ->add('street')
+            ->add('street', TextType::class, [
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Proszę wpisać nazwę użytkownika',
+                    ])]
+            ])
             ->add('houseNumber')
         ;
     }

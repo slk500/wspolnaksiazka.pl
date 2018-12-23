@@ -8,16 +8,30 @@
         <div class="col-sm">
             {{ form_start(libraryForm) }}
 
-            {{ form_widget(libraryForm) }}
+            {{ form_row(libraryForm.name, {
+                label: 'Nazwa'
+            }) }}
 
-            <button type="submit" class="btn btn-primary"> Dodaj</button>
+            {{ form_row(libraryForm.city, {
+                label: 'Miasto'
+            }) }}
+
+            {{ form_row(libraryForm.district, {
+                label: 'Dzielnica'
+            }) }}
+
+            {{ form_row(libraryForm.street, {
+                label: 'Ulica'
+            }) }}
+
+            {{ form_row(libraryForm.houseNumber, {
+                label: 'Numer Ulicy'
+            }) }}
+
+            <button type="submit" class="btn btn-primary" formnovalidate> Dodaj</button>
             {{ form_end(libraryForm) }}
         </div>
         </div>
 </div>
-{% endblock %}
-
-{% block javascripts %}
-
 {% endblock %}
 

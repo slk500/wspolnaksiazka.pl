@@ -8,16 +8,18 @@
         <div class="col-sm">
             {{ form_start(bookForm) }}
 
-            {{ form_widget(bookForm) }}
+            {{ form_row(bookForm.title, {
+                label: 'Tytuł'
+            }) }}
 
-            <button type="submit" class="btn btn-primary"> Dodaj</button>
+            {{ form_row(bookForm.author, {
+                label: 'Autor'
+            }) }}
+
+            <button type="submit" class="btn btn-primary" formnovalidate> Dodaj</button>
             {{ form_end(bookForm) }}
         </div>
         </div>
 </div>
-{% endblock %}
-
-{% block javascripts %}
-
 {% endblock %}
 

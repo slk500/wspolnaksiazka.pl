@@ -31,11 +31,11 @@ class BookController extends AbstractController
             $book->setTitle($bookData['title']);
             $book->setAuthor($bookData['author']);
 
-            if($bookData['year']){
+            if ($bookData['year']) {
                 $book->setYear($bookData['year']);
             }
 
-            if($bookData['library']){
+            if ($bookData['library']) {
                 $libraryBook = new LibraryBook($bookData['library'], $book);
             }
 
@@ -43,12 +43,12 @@ class BookController extends AbstractController
             $entityManager->persist($libraryBook);
             $entityManager->flush();
 
-            $this->addFlash('success','Świetnie! Dodałeś nową książkę :)');
+            $this->addFlash('success', 'Świetnie! Dodałeś nową książkę :)');
 
             return $this->redirectToRoute('app_book_list');
         }
 
-        return $this->render('book/create.html.twig' , [
+        return $this->render('book/create.html.twig', [
             'bookForm' => $form->createView()
         ]);
     }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -81,19 +82,28 @@ class Library
      */
     private $user;
 
+    /**
+     * @var LibraryBook
+     * @ORM\OneToMany(targetEntity="LibraryBook", mappedBy="library")
+     */
+    private $libraryBook;
+
     public function __construct()
     {
+        $this->libraryBook = new ArrayCollection();
         $this->created_at = new \DateTime('now');
+    }
+
+    public function getBooks()
+    {
+        return $this->libraryBook->map(function (LibraryBook $libraryBook) {
+            return $libraryBook->getBook();
+        })->toArray();
     }
 
     public function getId(): int
     {
         return $this->id;
-    }
-
-    public function setId(int $id): void
-    {
-        $this->id = $id;
     }
 
     public function getLat(): ?string

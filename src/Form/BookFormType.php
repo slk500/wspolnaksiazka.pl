@@ -4,11 +4,11 @@
 namespace App\Form;
 
 
-use App\Entity\Book;
+use App\Entity\Library;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class BookFormType extends AbstractType
@@ -28,15 +28,12 @@ class BookFormType extends AbstractType
                         'message' => 'Proszę wpisać imię i nazwisko autora',
                     ])]
             ])
+            ->add('year', TextType::class)
+            ->add('info', TextType::class)
+
+            ->add('library', EntityType::class, [
+                'class' => Library::class
+            ])
         ;
     }
-
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults([
-           'data_class' => Book::class
-        ]);
-    }
-
-
 }

@@ -4,6 +4,8 @@
 namespace App\Controller;
 
 
+use App\Entity\Book;
+use App\Entity\LibraryBook;
 use App\Form\BookFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -23,9 +25,22 @@ class BookController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $book = $form->getData();
+            $bookData = $form->getData();
+
+            $book = new Book();
+            $book->setTitle($bookData['title']);
+            $book->setAuthor($bookData['author']);
+
+            if($bookData['year']){
+                $book->setYear($bookData['year']);
+            }
+
+            if($bookData['library']){
+                $libraryBook = new LibraryBook($bookData['library'], $book);
+            }
 
             $entityManager->persist($book);
+            $entityManager->persist($libraryBook);
             $entityManager->flush();
 
             $this->addFlash('success','Świetnie! Dodałeś nową książkę :)');

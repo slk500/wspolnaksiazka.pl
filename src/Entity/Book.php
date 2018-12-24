@@ -39,6 +39,18 @@ class Book
     private $isbn;
 
     /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $year;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $info;
+
+    /**
      * @var \DateTime
      * @ORM\Column(type="datetime")
      */
@@ -127,5 +139,35 @@ class Book
         return $this->libraryBook->map(function (LibraryBook $libraryBook) {
             return $libraryBook->getLibrary();
         })->toArray();
+    }
+
+    public function getYear(): ?string
+    {
+        return $this->year;
+    }
+
+    public function setYear(string $year): void
+    {
+        $this->year = $year;
+    }
+
+    public function getInfo(): ?string
+    {
+        return $this->info;
+    }
+
+    public function setInfo(string $info): void
+    {
+        $this->info = $info;
+    }
+
+    public function getLibraryBook(): LibraryBook
+    {
+        return $this->libraryBook;
+    }
+
+    public function setLibraryBook(LibraryBook $libraryBook): void
+    {
+        $this->libraryBook = $libraryBook;
     }
 }

@@ -195,5 +195,10 @@ class Library
     {
         $this->user = $user;
     }
+
+    public function __toString()
+    {
+        return $this->getCity() . ' - ' . $this->getName();
+    }
 }
 

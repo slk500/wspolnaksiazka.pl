@@ -16,6 +16,18 @@
                 label: 'Autor'
             }) }}
 
+            {{ form_row(bookForm.library, {
+                label: 'Biblioteka'
+            }) }}
+
+            {{ form_row(bookForm.year, {
+                label: 'Rok (opcjonalnie)'
+            }) }}
+
+            {{ form_row(bookForm.info, {
+                label: 'Dodatkowe informacje (opcjonalnie)'
+            }) }}
+
             <button type="submit" class="btn btn-primary" formnovalidate> Dodaj</button>
             {{ form_end(bookForm) }}
         </div>

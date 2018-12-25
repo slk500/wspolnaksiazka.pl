@@ -30,11 +30,11 @@ class LibraryController extends AbstractController
     /**
      * @Route("/api/libraries/{id}")
      */
-    public function show(Library $library, SerializerInterface $serializer)
+    public function show(Library $library, EntityManagerInterface $entityManager, SerializerInterface $serializer)
     {
-        $libraryInJson = $serializer->serialize(['data' => $library], 'json');
+        $librariesInJson = $serializer->serialize(['data' => [$library]], 'json');
 
-        return new Response($libraryInJson);
+        return new Response($librariesInJson);
     }
 }
 

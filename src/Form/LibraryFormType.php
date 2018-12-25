@@ -32,7 +32,7 @@ class LibraryFormType extends AbstractType
             ->add('street', TextType::class, [
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Proszę wpisać nazwę użytkownika',
+                        'message' => 'Proszę wpisać nazwę ulicy',
                     ])]
             ])
             ->add('houseNumber')

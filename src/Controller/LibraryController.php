@@ -3,11 +3,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Library;
 use App\Form\LibraryFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class LibraryController extends AbstractController
 {
@@ -37,13 +40,26 @@ class LibraryController extends AbstractController
             ]);
     }
 
-
     /**
      * @Route("/biblioteki")
      */
     public function list()
     {
         return $this->render('library/list.html.twig');
+    }
+
+    /**
+     * @Route("/biblioteki/{id}")
+     */
+    public function show(Library $library, NormalizerInterface $normalizer)
+    {
+        $library = $normalizer->normalize($library);
+
+        dump($library);
+
+        return $this->render('library/show.html.twig', [
+            'library' => $library
+        ]);
     }
 }
 

@@ -20,9 +20,10 @@ class User implements UserInterface
     private $id;
 
     /**
+     * @var string
      * @ORM\Column(type="string", length=180, unique=true)
      */
-    private $username;
+    private $name;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
@@ -69,6 +70,16 @@ class User implements UserInterface
         return $this;
     }
 
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
     /**
      * A visual identifier that represents this user.
      *
@@ -81,7 +92,7 @@ class User implements UserInterface
 
     public function setUsername(string $username): void
     {
-        $this->username = $username;
+        $this->name = $username;
     }
 
     /**

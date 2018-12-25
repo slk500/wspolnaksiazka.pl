@@ -23,7 +23,7 @@ class LibraryNormalizer implements NormalizerInterface
             'id'  => $object->getId(),
             'name' => $object->getName(),
             'city' => $object->getCity(),
-            'distrixt' => $object->getDistrict(),
+            'district' => $object->getDistrict(),
             'street' => $object->getStreet(),
             'houseNumber' => $object->getHouseNumber(),
             'userId' => $object->getUser() ? $object->getUser()->getId() : null,
@@ -54,7 +54,8 @@ class LibraryNormalizer implements NormalizerInterface
                 'title' => $book->getTitle(),
                 'year' => $book->getYear(),
                 'info' => $book->getInfo(),
-                'user' => $book->getUser() ? $book->getUser()->getUsername() : null,
+                'createdAt' => $book->getCreatedAt(),
+                'user' => $book->getUser(),
             ];
         }
 

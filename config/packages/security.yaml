@@ -19,6 +19,8 @@ security:
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
+            logout:
+                path: logout
 
             # activate different ways to authenticate
 

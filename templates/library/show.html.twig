@@ -10,8 +10,15 @@
         <span><a href="{{ path('app_book_create') }}">Kliknij tutaj aby dodać książkę</a></span>
     </div>
 
+
+
     <div class="container">
         <div class="row">
+            <div>
+                <strong>nazwa: </strong> {{ library.name }} <br>
+                <strong>miasto: </strong> {{  library.city }} <br>
+                <strong>ulica: </strong> {{ library.street }} {{ library.houseNumber }}
+            </div>
             <table id="table_id" class="display">
                 <thead>
                 <tr>

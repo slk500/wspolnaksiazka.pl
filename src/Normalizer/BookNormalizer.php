@@ -46,6 +46,7 @@ class BookNormalizer implements NormalizerInterface
          */
         foreach ($librariesObjects as $library) {
             $libraries []= [
+                'id' => $library->getId(),
                 'name' => $library->getName(),
                 'city' => $library->getCity(),
                 'district' => $library->getDistrict(),

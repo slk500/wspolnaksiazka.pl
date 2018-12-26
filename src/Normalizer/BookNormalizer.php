@@ -22,7 +22,7 @@ class BookNormalizer implements NormalizerInterface
         return [
             'title'  => $object->getTitle(),
             'author' => $object->getAuthor(),
-            'userId' => $object->getUser() ? $object->getUser()->getId() : null,
+            'user' => $object->getUser(),
             'libraries' => $libraries
         ];
     }

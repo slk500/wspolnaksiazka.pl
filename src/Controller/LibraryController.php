@@ -10,7 +10,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\SerializerInterface;
 
 class LibraryController extends AbstractController
 {
@@ -54,8 +53,6 @@ class LibraryController extends AbstractController
     public function show(Library $library, NormalizerInterface $normalizer)
     {
         $library = $normalizer->normalize($library);
-
-        dump($library);
 
         return $this->render('library/show.html.twig', [
             'library' => $library

@@ -21,18 +21,24 @@ class RegistrationFormType extends AbstractType
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Proszę wpisać email',
-                    ])]
+                    ])],
+                'empty_data' => '',
+                'required' => true,
             ])
             ->add('username',TextType::class, [
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Proszę wpisać nazwę użytkownika',
-                    ])]
+                    ])],
+                'empty_data' => '',
+                'required' => true,
             ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
+                'empty_data' => '',
+                'required' => true,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Proszę wpisać hasło',
